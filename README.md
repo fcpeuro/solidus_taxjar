@@ -1,7 +1,7 @@
-SpreeTaxjar
+SolidusTaxjar
 ===========
 
-Spree::Taxjar is a sales tax extension for Spree using [SmartCalcs by TaxJar](https://developers.taxjar.com/api/reference/).
+Solidus::Taxjar is a sales tax extension for Solidus using [SmartCalcs by TaxJar](https://developers.taxjar.com/api/reference/).
 
 ## Prerequisites
 
@@ -11,31 +11,13 @@ Spree::Taxjar is a sales tax extension for Spree using [SmartCalcs by TaxJar](ht
 - Go to `Account >> State Settings` and click the [Add State with Nexus](http://blog.taxjar.com/sales-tax-nexus-definition/) button for each state where want/need to collect sales tax.
     - **NOTE:** TaxJar returns ZERO sales tax by default for orders shipping to states which are not designated as a nexus state.
 
-Demo
------------------------------------
-Try Spree Taxjar for Spree Master with direct deployment on Heroku:
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/vinsol-spree-contrib/spree-demo-heroku/tree/spree-taxjar-master)
-
-Try Spree Taxjar for Spree 3-4 with direct deployment on Heroku:
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/vinsol-spree-contrib/spree-demo-heroku/tree/spree-taxjar)
-
-Try Spree Taxjar for Spree 3-1 with direct deployment on Heroku:
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/vinsol-spree-contrib/spree-demo-heroku/tree/spree-taxjar-3-1)
-
- *NOTE**: Don't forget to create a taxjar account and update the key in your admin section && Update tax rates to Spree/Taxjar calculator.
-
 ## Installation
 
 1. Add this extension to your Gemfile with this line:
 
   ```ruby
-  gem 'spree_taxjar', github: 'vinsol-spree-contrib/spree_taxjar'
+  gem 'solidus_taxjar', github: 'fcpeuro/solidus_taxjar'
   ```
-
-  **Note** For spree 3-1 use `3-1-stable` branch. For spree version > 3-1 use `master` branch.
 
 2. Install the gem using Bundler:
 
@@ -46,7 +28,7 @@ Try Spree Taxjar for Spree 3-1 with direct deployment on Heroku:
 3. Copy & run migrations
 
   ```ruby
-  bundle exec rails g spree_taxjar:install
+  bundle exec rails g solidus_taxjar:install
   ```
 
 4. Restart your server
@@ -65,7 +47,7 @@ Try Spree Taxjar for Spree 3-1 with direct deployment on Heroku:
 - Ensure `Spree::Config[:taxjar_enabled]` is set as expected (true/false)
 - Set `Spree::Config[:taxjar_debug_enabled]` as true
     - It starts logging the interactions in `spec/dummy/log/spree_taxjar.log` if using tests
-    - Check the logs in your Rails application AT `log/spree_taxjar.log` where you have installed the spree_taxjar extension
+    - Check the logs in your Rails application AT `log/solidus_taxjar.log` where you have installed the spree_taxjar extension
     - The same logs are also added to Rails log file like `log/development.log` (works for all environments)
 - As most of the API interactions are recorded and stored in VCR cassettes AT `spec/fixtures/vcr_cassettes`
     - Start with getting familiar with request and response expected
