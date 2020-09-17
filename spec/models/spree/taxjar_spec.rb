@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Spree::Taxjar do
+describe Solidus::Taxjar do
 
   let(:reimbursement) { create(:reimbursement) }
   let!(:country) { create(:country) }
@@ -18,7 +18,7 @@ describe Spree::Taxjar do
   let!(:taxjar_api_key) { Spree::Config[:taxjar_api_key] = '04d828b7374896d7867b03289ea20957' }
   let(:client) { double(Taxjar::Client) }
 
-  let(:spree_taxjar) { Spree::Taxjar.new(order) }
+  let(:spree_taxjar) { Solidus::Taxjar.new(order) }
 
   describe '#has_nexus?' do
     context 'nexus_regions is not present' do
@@ -40,7 +40,7 @@ describe Spree::Taxjar do
 
       context 'tax_address is not present in nexus regions' do
         before :each do
-          @spree_taxjar_new = Spree::Taxjar.new(order_al)
+          @spree_taxjar_new = Solidus::Taxjar.new(order_al)
         end
 
         it 'should return false' do
@@ -58,7 +58,7 @@ describe Spree::Taxjar do
       allow(::Taxjar::Client).to receive(:new).with(api_key: Spree::Config[:taxjar_api_key]).and_return(client)
     end
 
-    let(:spree_taxjar) { Spree::Taxjar.new(order) }
+    let(:spree_taxjar) { Solidus::Taxjar.new(order) }
 
     describe '#initialize' do
 
@@ -158,7 +158,7 @@ describe Spree::Taxjar do
   end
 
   context 'When reimbursement is present' do
-    let(:spree_taxjar) { Spree::Taxjar.new(order, reimbursement) }
+    let(:spree_taxjar) { Solidus::Taxjar.new(order, reimbursement) }
     before do
       allow(::Taxjar::Client).to receive(:new).with(api_key: Spree::Config[:taxjar_api_key]).and_return(client)
     end
