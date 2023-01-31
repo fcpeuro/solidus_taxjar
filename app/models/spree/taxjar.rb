@@ -6,7 +6,7 @@ module Spree
       @order = order
       @shipment = shipment
       @reimbursement = reimbursement
-      @client = ::Taxjar::Client.new api_key: api_key
+      @client = ::Taxjar::Client.new(api_key: api_key, api_url: Rails.env.production? ? 'https://api.taxjar.com' : 'https://api.sandbox.taxjar.com')
     end
 
     def create_refund_transaction_for_order

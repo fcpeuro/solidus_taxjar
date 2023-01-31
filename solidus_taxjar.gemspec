@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.requirements << 'none'
 
   s.add_dependency 'solidus'
-  s.add_dependency 'taxjar-ruby', '~> 2.0.0'
+  s.add_dependency 'taxjar-ruby', '~> 2.1.0'
 
   s.add_development_dependency 'byebug'
   s.add_development_dependency 'capybara'
